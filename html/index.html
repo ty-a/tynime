@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Video Test</title>
+	<script src="js/video.js"></script>
+	<link rel="stylesheet" href="css/main.css" type="text/css">
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+<body>
+	<nav class="navigation">
+		<ul class="navigation-list">
+			<li><a href="index.php" alt="tynime" class="home-link">tynime</a></li>
+			<li><a href="shows.php" alt="shows" class="shows-link">Shows</a></li>
+			<li><a href="login.php" alt="login" class="login-link">Login</a></li>
+		</ul>
+	
+	</nav>
+	<div class="video-container">
+		<div class="video-title">
+			<h1>AKB0048 - Episode 1 - The Indelible Dream</h1>
+		</div>
+		<video id="video" controls preload="auto" autoplay width="600px" height="390px">
+			<source id="videosrc" src="..\videos\AKB0048\AKB0048 Episode 1 – The Indelible Dream.mp4" type="video/mp4" >
+			<track id="asssrc" label="English" kind="subtitles" srclang="en" src="..\videos\AKB0048\AKB0048 Episode 1 – The Indelible Dream.vtt" default />
+		</video>
+		<div class="links-container center">
+			<div class="prev-link">
+				<a href="awef">Previous Video</a>
+			</div>
+			<div class="next-link">
+				<a href="awef">Next Video</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+35
+00:02:23.400 --> 00:02:23.990 align:middle line:1
+<v AKB-main SONG>Yes!
+
+Regexes {\a6}
+\r\n(<.*>)\{\\a6\} ->  align:middle line:1\n\1
+
+{\fad}
+\{\\fad\(.*\)\}
