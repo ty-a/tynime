@@ -78,7 +78,6 @@
 		}
 		return $out;
 	}
-	loadEpisodes($_GET["seriesId"]);
 ?>
 <!DOCTYPE html>
 <html>
