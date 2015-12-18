@@ -11,5 +11,8 @@
 </head>
 <body>
 	<?php showSiteNavigation(); ?>
+	<ul>
+		<li><a href="shows.php">Pick a Show to Watch!</a></li>
+	</ul>
 </body>
 </html>

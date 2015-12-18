@@ -4,7 +4,7 @@ import sys
 import MySQLdb
 
 #Our series ID, obtained after adding the series to the DB
-seriesId = 2
+seriesId = "2"
 #Get our data from the title
 #Format: ShowName Episode Number - Title
 filename = argv[1]

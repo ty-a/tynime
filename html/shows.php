@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>tynime - Local Streaming Made Easy</title>
+	<title>Shows - tynime - Local Streaming Made Easy</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<?php addSiteReqs(); ?>
 </head>
