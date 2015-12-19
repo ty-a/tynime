@@ -52,7 +52,6 @@ function load_video_info($videoId) {
 	$query->store_result();
 	
 	if($query->num_rows == 0) {
-		echo("Video not found");
 		return false;
 	}
 	
