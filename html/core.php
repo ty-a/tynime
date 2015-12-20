@@ -3,6 +3,9 @@
 error_reporting(E_ALL); 
 ini_set('display_errors', '1');
 
+session_name("tynime");
+session_start();
+
 require_once("config.php");
 
 function showSiteNavigation() {
@@ -10,7 +13,13 @@ function showSiteNavigation() {
 		<ul class="navigation-list">
 			<li><a href="index.php" alt="tynime" class="home-link">tynime</a></li>
 			<li><a href="shows.php" alt="shows" class="shows-link">Shows</a></li>
+		<?php
+		if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']) { ?>
+			<li><?php echo $_SESSION["username"]; ?> (<a href="logout.php" alt="logout" style="display:inline">Logout</a>)</li>
+		<?php } else { ?>
 			<li><a href="login.php" alt="login" class="login-link">Login</a></li>
+		<?php } ?>
+			
 		</ul>
 	</nav>
 	<?php
