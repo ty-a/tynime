@@ -106,6 +106,35 @@
 		
 	}
 	
+	function update_view_count($videoId) {
+		global $dbHost, $dbUser, $dbPass, $dbName;
+		
+		$db = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
+		if( $db->connect_error ) {
+			echo("Failed to connect to Database");
+			return false;
+		}
+		
+		if(!($query = $db->prepare("UPDATE videos SET views = views + 1 WHERE videoId = ?;"))) {
+			echo("Failed to create query");
+			return false;
+		}
+
+		if(!($query->bind_param( "i", $videoId))) {
+			echo("Failed to bind query params");
+			return false;
+		}
+		
+		if(!($query->execute())) {
+			echo("Failed to execute query");
+			return false;
+		}
+		
+		if($query->affected_rows < 1) {
+			echo "failed to update";
+		}
+	}
+	
 	if(isset($_GET['v'])) {
 		$info = load_video_info($_GET['v']);
 	} else  {
@@ -128,6 +157,9 @@
 <body>
 	<?php showSiteNavigation(); 
 		if($info != false) {
+			// add one to our view counter variable
+			update_view_count($_GET["v"]);
+			
 			$links = create_links($info["seriesName"], $info["seriesPos"], $info["name"]);
 			$prev_and_next_links = get_prev_and_next_links($info["seriesName"], $info["seriesPos"]);
 			?>
@@ -154,6 +186,14 @@
 				<?php
 			} ?>
 			
+		</div>
+		<br />
+		<div class="view-counter center">
+			<span>Views: <?php if(empty($info["views"])) {
+				echo "1";
+			} else {
+				echo 1 + $info["views"];
+			} ?>
 		</div>
 	</div>
 	<?php
