@@ -78,3 +78,41 @@ nav a {
 	color:#FFFEF8;
 	text-decoration:none
 }
+
+/* LOGIN FORMS */
+#login-container {
+	width:340px;
+	position:float;
+	
+}
+
+#login-form {
+	background-color:#DF5DA2;
+	margin:0 auto;
+	margin-top:20px;
+	padding-bottom: 15px;
+}
+
+#login-form label {
+	display:inline-block;
+	margin-left:18px;
+	padding-top:10px;
+	color: #FFFEF8;
+}
+
+#login-form input[type=text], input[type=password] {
+	padding-left: 10px;
+	margin-top: 12px;
+	margin-left: 18px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	width: 290px;
+	height: 35px;
+}
+
+#login-form input[type=submit] {
+	height:35px;
+	width:80px;
+	margin-bottom: 12px;
+	
+}
