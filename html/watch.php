@@ -165,7 +165,7 @@
 			?>
 	<div class="video-container">
 		<h2><?php echo $info["seriesName"]?> <br /> <?php echo "Episode " . $info["seriesPos"] . ": " . $info["name"] ?></h2>
-		<video id="video" controls preload="auto" autoplay width="600px" height="390px">
+		<video id="video" controls preload="auto" autoplay width="600px" height="390px" oncontextmenu="return false;">
 			<source id="videosrc" src="<?php echo $links["videoLink"] ?>" type="video/mp4" >
 			<?php
 			if($info["hasSubs"]) {
