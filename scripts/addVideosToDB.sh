@@ -9,5 +9,5 @@ do
 		echo "New series ID created for $g, it is $seriesId!"
 	fi
 	
-	python /var/www/scripts/addVideosToDB.py "$g" "$seriesId"
+	python /var/www/scripts/addVideosToDB.py "$g" "$seriesId" "$1"
 done

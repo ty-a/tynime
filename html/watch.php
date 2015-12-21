@@ -167,7 +167,13 @@
 		<h2><?php echo $info["seriesName"]?> <br /> <?php echo "Episode " . $info["seriesPos"] . ": " . $info["name"] ?></h2>
 		<video id="video" controls preload="auto" autoplay width="600px" height="390px">
 			<source id="videosrc" src="<?php echo $links["videoLink"] ?>" type="video/mp4" >
+			<?php
+			if($info["hasSubs"]) {
+			?>
 			<track id="asssrc" label="English" kind="subtitles" srclang="en" src="<?php echo $links["subsLink"] ?>" default />
+			<?php
+			}
+			?>
 		</video>
 		<div class="links-container center">
 			<?php

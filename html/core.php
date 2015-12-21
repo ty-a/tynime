@@ -43,7 +43,7 @@ function load_video_info($videoId) {
 		return false;
 	}
 	
-	if(!($query = $db->prepare("SELECT views,name,seriesPos,seriesId FROM videos WHERE videoId = ?"))) {
+	if(!($query = $db->prepare("SELECT views,name,seriesPos,seriesId,hasSubs FROM videos WHERE videoId = ?"))) {
 		echo("Failed to create query");
 		return false;
 	}
@@ -64,7 +64,7 @@ function load_video_info($videoId) {
 		return false;
 	}
 	
-	$query->bind_result( $viewCount, $videoName, $seriesPos, $seriesId );
+	$query->bind_result( $viewCount, $videoName, $seriesPos, $seriesId, $hasSubs );
 	$query->fetch();
 	
 	// GET SERIES NAME 
@@ -92,6 +92,7 @@ function load_video_info($videoId) {
 		"views" => $viewCount,
 		"name" => $videoName,
 		"seriesPos" => $seriesPos,
-		"seriesName" => $seriesName
+		"seriesName" => $seriesName,
+		"hasSubs" => $hasSubs
 	);
 }

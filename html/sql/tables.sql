@@ -18,5 +18,6 @@ CREATE TABLE IF NOT EXISTS videos(
 	views int unsigned,
 	name varchar(255),
 	seriesPos int unsigned,
+	hasSubs boolean DEFAULT true,
 	FOREIGN KEY (seriesId) REFERENCES series(seriesId)
 );
