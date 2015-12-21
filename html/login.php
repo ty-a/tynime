@@ -60,6 +60,8 @@
 			<input type="password" id="password-text" name="password" required></input>
 			
 			<input type="submit" class="center" />
+			
+			<div id="need-to-register">Need to <a href="register.php">Register?</a></div>
 		</form>
 	</div>
 	<?php } else { // FORM WAS POSTED, YO

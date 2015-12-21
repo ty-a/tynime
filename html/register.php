@@ -90,7 +90,10 @@
 			<input type="password" id="password-confirm-text" name="password-confirm" required></input>
 			
 			<input type="submit" class="center" />
+			
+			<div class="center">Already have an account? <a href="login.php">Login!</a></div>
 		</form>
+		
 	</div>
 	<?php } else { // FORM WAS POSTED, YO
 		// Only checking for those web browsers that do not support the required attribute or for users attempting to bot the form

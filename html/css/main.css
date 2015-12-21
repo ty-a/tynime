@@ -18,7 +18,9 @@ body {
 	box-shadow: 0 0 0 2px #E3E1D6;
 	font-size:24px;
 	text-align:center;
-	margin-top:-10px;
+	margin-top:-34px;
+	margin-left:-10px;
+	padding-right:96px;
 }
 
 .video-container {
@@ -115,5 +117,28 @@ nav a {
 	height:35px;
 	width:80px;
 	margin-bottom: 12px;
-	
+}
+
+#login-form div {
+	color:#FFFEF8;
+	margin-left:50px;
+}
+
+#need-to-register {
+	margin-left:115px !important;
+}
+
+#login-form div a {
+	color:#FFFEF8;
+	text-decoration:none;
+}
+
+.left {
+	width: calc((100% /4));
+	float: left;
+}
+
+.right {
+	width: calc((100% /4) *2);
+	float: left;
 }
