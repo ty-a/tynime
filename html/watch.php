@@ -135,6 +135,74 @@
 		}
 	}
 	
+	function add_video_to_history($videoId) {
+		// first we will read in their history
+		// then we will see if it is more than the maximum (set with $maxHistorySize in config.php)
+		// If it is, we will remove the oldest
+		// then we will add the new item
+		// we will put the new list back into the database
+		
+		global $dbHost, $dbUser, $dbPass, $dbName, $maxHistorySize;
+		
+		$db = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
+		if( $db->connect_error ) {
+			echo("Failed to connect to Database");
+			return false;
+		}
+		
+		if(!($query = $db->prepare("SELECT viewHistory FROM users WHERE username = ?"))) {
+			echo("Failed to create query to add item to history");
+			return false;
+		}
+		
+		if(!($query->bind_param( "s", $_SESSION['username'] ))) {
+			echo("Failed to bind query params  to add item to history");
+			return false;
+		}
+		
+		if(!($query->execute())) {
+			echo("Failed to execute query  to add item to history");
+			return false;
+		}
+		
+		$query->store_result();
+		
+		$query->bind_result( $viewHistory );
+		$query->fetch();
+		
+		if(empty($viewHistory)) {
+			$history = array();
+		} else {
+			// We now have the user's view history from the database
+			$history = explode(",", $viewHistory);
+		}
+		
+		array_unshift($history, $videoId);
+		
+		if(count($history) > $maxHistorySize) {
+			array_pop($history);
+		}
+
+		// put it back into a delimited string
+		$viewHistory = implode(",", $history);
+		
+		// put new history into the DB
+		if(!($query = $db->prepare("UPDATE users SET viewHistory = ? WHERE username = ?;"))) {
+			echo("Failed to create query");
+			return false;
+		}
+
+		if(!($query->bind_param( "ss", $viewHistory, $_SESSION["username"]))) {
+			echo("Failed to bind query params");
+			return false;
+		}
+		
+		if(!($query->execute())) {
+			echo("Failed to execute query");
+			return false;
+		}
+	}
+	
 	if(isset($_GET['v'])) {
 		$info = load_video_info($_GET['v']);
 	} else  {
@@ -159,6 +227,11 @@
 		if($info != false) {
 			// add one to our view counter variable
 			update_view_count($_GET["v"]);
+			
+			// if they are logged in, add this video to their history
+			if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+				add_video_to_history($_GET["v"]);
+			}
 			
 			$links = create_links($info["seriesName"], $info["seriesPos"], $info["name"]);
 			$prev_and_next_links = get_prev_and_next_links($info["seriesName"], $info["seriesPos"]);
