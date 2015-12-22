@@ -68,11 +68,12 @@
 		
 		$db = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 		
-		if($result = $db->query("SELECT videoId, name, seriesPos FROM videos WHERE seriesId = " . $seriesId)) {
+		if($result = $db->query("SELECT videoId, name, seriesPos FROM videos WHERE seriesId = " . $seriesId . " ORDER BY seriesPos ASC")) {
 			while($row = $result->fetch_row()) {
-				$out[$row[2]] = array(
+				$out[] = array(
 					"videoId" => $row[0],
-					"name" => $row[1]
+					"name" => $row[1],
+					"position" => $row[2]
 				);
 			}
 		}
@@ -95,9 +96,9 @@
 		if(!$episodes || $numOfEpisodes == 0) {
 			die("No episodes available");
 		}
-		
-		for($i = 1; $i <= $numOfEpisodes; $i++) {
-			echo "<li><a href=\"watch.php?v=" . $episodes[$i]["videoId"] . "\">" . $showName . " Episode " . $i . " – " . $episodes[$i]["name"] . "</a></li>";
+
+		foreach($episodes as $episode) {
+			echo "<li><a href=\"watch.php?v=" . $episode["videoId"] . "\">" . $showName . " Episode " . $episode["position"] . " – " . $episode["name"] . "</a></li>";
 		}
 		?>
 	</ul>

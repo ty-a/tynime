@@ -7,6 +7,6 @@ done
 for g in *.vtt
 do
 	echo $g
-	python /var/www/videos/finish-convert.py "$g"
+	python /var/www/scripts/finish-convert.py "$g"
 done
 
