@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS  users(
 	userId int unsigned PRIMARY KEY AUTO_INCREMENT,
 	username varchar(50),
 	password varchar(255),
-	email varchar(255)
+	email varchar(255),
+	viewHistory varchar(300) DEFAULT ""
 );
 
 CREATE TABLE IF NOT EXISTS series(
